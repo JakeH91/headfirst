@@ -21,9 +21,17 @@ function makeCar() {
 		passengers: randPassengers,
 		mileage: 0,
 		engineOn: false,
+		fuel: 0,
+
 		start: function(){
-			this.engineOn = true;
-			console.log("The car has started.")
+			if(this.fuel > 0){
+				this.engineOn = true;
+				console.log("The car has started.");
+			}
+			else{
+				console.log("The car sputters a bit, then dies. Looks like you need to top up your fuel.");
+			}
+			
 		},
 		stop: function(){
 			this.engineOn = false;
@@ -31,10 +39,25 @@ function makeCar() {
 		},
 		drive: function(){
 			if(this.engineOn){
-				console.log("Vrroooooooom!!");
+				if(this.fuel > 0){
+					console.log("VRRRROOOOOOOooooooommmmm!!!");
+					this.fuel -= 1;
+				}
+				else{
+					console.log("Uh oh! Looks like you're out of fuel");
+				}
 			}
 			else{
 				console.log("You need to start the car first...");
+			}
+		},
+		addFuel: function(amount){
+			if(this.fuel <= 100){
+				console.log("Fuel gauge has gone up by " + amount + ", making total fuel = " + this.fuel + ".");
+				this.fuel += amount;
+			}
+			else{
+				console.log("Your tank is full! No need for more.");
 			}
 		}
 	}
@@ -44,6 +67,10 @@ function makeCar() {
 
 function displayCar(car){
 	console.log("Your new car is a " + car.year + " " + car.make + " " + car.model + ".");
+	// console.log("Let's take a closer look at your new car.");
+	// for(prop in car){
+	// 	console.log(prop + ": " + car[prop]);
+	// };
 }
 
 var newCar = makeCar();
@@ -58,5 +85,8 @@ function doSomething(carId){
 	}
 	else if(carId == "stop"){
 		newCar.stop();
+	}
+	else if(carId == "addFuel"){
+		newCar.addFuel(10);
 	}
 };
