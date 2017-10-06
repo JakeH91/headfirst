@@ -1,0 +1,23 @@
+#display {
+	display: inline-block;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+#horray {
+	display: inline-block;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.valid {
+	color: green;
+	border: 2px solid green;
+}
+
+.invalid {
+	color: red;
+	border: 2px solid red;
+}

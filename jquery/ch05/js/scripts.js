@@ -50,7 +50,6 @@ $(document).ready(function(){
 
 	
 	function lightning_one(){
-		debugger;
 		$("#container #lightning1").fadeIn(250).fadeOut(250);
 		setTimeout("lightning_one()", 4000);
 	};
